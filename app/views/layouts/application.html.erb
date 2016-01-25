@@ -7,8 +7,54 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="wrapper">
+    <nav>
+      <div class="content">
+        <ul>
+        <% if logged_in? %>
+          <li><%= link_to current_user.username, user_path(current_user.id) %> </li>
+          <li><%= link_to "logout", logout_path %></li>
+        <% else %>
+          <li><%= link_to "register", register_path %></li>
+          <li><%= link_to "login", login_path %></li>
+        <% end %>
+          <li><%= form_tag('/search', method: 'get') do %>
+              <%= text_field_tag(:terms) %>
+              <%= submit_tag('Search') %>
+              <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="content">
+        <div class="error-box">
+          <% flash.each do |key, value|  %>
+            <div class="error-messages-<%= key %>">
+              <div class="alert alert-<%= key %>"><%= value %></div>
+            </div>
+          <% end %>
+        </div>
+      <header>
+        <%= link_to image_tag("logo.png", :border => 0), root_path %>
+        <div class="btns">
+          <div class="btn">
+            <%= link_to "Add Recipe", new_recipe_path %>
+          </div>
+          <div class="btn">
+            <%= link_to "Categories", categories_path %>
+          </div>
+        </div>
+      </header>
+      <div id="main">
+       <%= yield %>
+      </div>
+    </div>
+      <div class="push"></div>
+  </div>
+      <footer>
+        <div class="center">
+          <p id="copyright">&copy; recipes 2016</p>
+        </div>
+      </footer>
 </body>
 </html>
