@@ -1,0 +1,13 @@
+<div class="side-btns">
+  <div class="btn" btn-id='vote-sort'>
+    <%= link_to "Sort by highest votes", '/votes' %>
+  </div>
+  <div class="btn" btn-id='trendy-sort'>
+    <%= link_to "Sort by trendiness", '/trendiness' %>
+  </div>
+  <div class="btn" btn-id='recent-sort'>
+    <%= link_to "Sort by most recent", '/recentness' %>
+  </div>
+</div>
+
+<%= render 'welcome/recipes_list', locals: {recipes: @recipes} %>
