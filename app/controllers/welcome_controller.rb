@@ -1,13 +1,13 @@
 class WelcomeController < ApplicationController
   def index
     if params[:order_by] == 'votes'
-      @recipes = Question.sort_by_votes
+      @recipes = Recipe.sort_by_votes
     elsif params[:order_by] == 'trendiness'
-      @recipes = Question.sort_by_trendiness
+      @recipes = Recipe.sort_by_trendiness
     elsif params[:order_by] == 'recentness'
-      @recipes = Question.sort_by_recentness
+      @recipes = Recipe.sort_by_recentness
     else
-      @recipes = Question.all
+      @recipes = Recipe.all
     end
     if request.xhr?
       if params[:order_by] == 'votes'
