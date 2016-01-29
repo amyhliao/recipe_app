@@ -1,0 +1,9 @@
+<div class='ques-answer cf'>
+<h4>Recipes tagged with <%=@category.name%>:</h4>
+
+  <ul>
+  <% @category.recipes.each do |recipe| %>
+      <div class="btn"><%= link_to recipe.title, recipe_path(recipe) %></div>
+  <% end %>
+  </ul>
+</div>
