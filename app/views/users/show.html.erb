@@ -1,0 +1,27 @@
+<h1><%= @user.username %>'s profile</h1>
+<div class="ques-answer cf">
+<h3><%= @user.username %>'s Recipes:</h3>
+  <% if @user.recipes.empty? %>
+    <p>You have uploaded 0 recipes. </p>
+    <p>Upload a new <%= link_to "recipe", new_recipe_path %>.</p>
+  <% else %>
+  <ol>
+    <% @user.recipes.each do |r| %>
+      <li><%= link_to r.title, recipe_path(r) %> | Reviews: <%= r.reviews.count %> | Votes: <%= r.vote_count %></li>
+    <% end %>
+  </ol>
+  <% end %>
+</div>
+<div class="ques-answer cf">
+  <h3><%= @user.username %>'s Reviews:</h3>
+  <% if @user.reviews.empty? %>
+    <p>You have reviewed 0 recipes.</p>
+    <p>Go ahead and  <%= link_to "review", root_path %> some recipes!</p>
+  <% else %>
+      <ol>
+        <% @user.reviews.each do |a| %>
+          <li>Review: <%= link_to a.content, recipe_path(a.recipe_id) %> | Votes: <%= a.vote_count %> | Recipe: <%= a.recipe.title %>, by: <%= a.recipe.asker.username %></li>
+        <% end %>
+      </ol>
+    <% end %>
+</div>
