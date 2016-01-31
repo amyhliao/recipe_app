@@ -1,0 +1,12 @@
+<div class="ques-list">
+  <% @recipes.each do |r| %>
+  <div class="ques-item">
+    <div class="ques-deets">
+      <div class="ques-deet"><%= q.vote_count %> <br><span>votes</span></div>
+      <div class="ques-deet"><%= q.reviews.size%> <br><span>reviews</span></div>
+      <div class="ques-deet"><%= q.view_count %> <br><span>views</span></div>
+    </div>
+    <h3><%= link_to r.title, recipe_path(r) %></h3>
+  </div>
+  <% end %>
+</div>
