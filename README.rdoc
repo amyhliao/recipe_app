@@ -5,9 +5,6 @@ This application will allow logged in users to upload their own recipes, review 
 Technologies used:
 
 * Ruby on Rails
-
 * Javascript
-
 * jQuery
-
 * AJAX
