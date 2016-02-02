@@ -1,4 +1,4 @@
-== Recipes!
+== Recipes Galore!
 
 This application will allow logged in users to upload their own recipes, review and rate recipes, and save other upload recipes to their favorites.
 
