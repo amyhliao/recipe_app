@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :recipes, only: [:index, :new, :create, :show] do
+    resources :reviews, only: [:index, :new, :create]
+    resources :responses, only: [:index, :new, :create, :show] do
+      resources :votes, only: [:new, :create]
+    end
+    resources :votes, only: [:new, :create]
+  end
+
   resources :tags, only: [:index, :show]
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :delete]
