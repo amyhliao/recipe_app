@@ -1,0 +1,15 @@
+<div class="ques-review cf">
+  <h2><%= recipe.title%></h2>
+  <div class="content-row">
+    <% if logged_in? %>
+      <% if @recipe.vote_on_this?(current_user.id)  %>
+        <div class="vote-deets"><%= render "votes/vote_form", :object => @recipe, :vote => @vote %></div>
+      <% else %>
+        <%= render :partial => "recipes/disabled_votes", locals: {object: @recipe} %>
+      <% end %>
+    <% else %>
+      <%= render :partial => "recipes/disabled_votes", locals: {object: @recipe} %>
+    <% end %>
+
+  </div>
+</div>
