@@ -1,0 +1,55 @@
+<div class="ques-review cf">
+  <h2><%= recipe.title%></h2>
+  <div class="content-row">
+    <% if logged_in? %>
+      <% if @recipe.vote_on_this?(current_user.id)  %>
+        <div class="vote-deets"><%= render "votes/vote_form", :object => @recipe, :vote => @vote %></div>
+      <% else %>
+        <%= render :partial => "recipes/disabled_votes", locals: {object: @recipe} %>
+      <% end %>
+    <% else %>
+      <%= render :partial => "recipes/disabled_votes", locals: {object: @recipe} %>
+    <% end %>
+    <div class="left-deets">
+      <div class="ques-content"><%= recipe.description%></div>
+    </div>
+    <!-- <div class="right-deets">
+      <p>Posted: <%= time_ago_in_words(recipe.created_at) %></p>
+      <p>Views: <%= recipe.view_count %></p>
+      <p>Votes: <%= recipe.vote_count %></p>
+    </div>
+  </div>
+  <div class="content-row">
+    <div class="left-deets">
+        <ul>
+          <%= render :partial => "tags/tag", :collection => @recipe.tags %>
+        </ul>
+    </div>
+    <div class="right-deets">
+      <ul>
+        <li><%= time_ago_in_words(recipe.updated_at) %></li>
+        <li><%= link_to recipe.asker.username, user_path(recipe.asker) %></li>
+      </ul>
+    </div>
+    <hr class="divider">
+  </div>
+  <% if @recipe.responses %>
+    <%= render :partial => "responses/response", :collection => @recipe.responses %>
+  <% end %>
+  <div class="comment-link"><%= link_to "comment", new_recipe_response_path(@recipe) %></div>
+</div>
+<div class="review">
+  <% if !@recipe.reviews.empty? %>
+    <div class="review-header">
+      <h3><%= recipe.reviews.size%> Reviews</h3>
+    </div>
+  <% end %>
+  <% @recipe.sorted_reviews.each do |review| %>
+    <div class="content-row">
+      <%= render review %>
+    </div>
+  <% end %>
+  <div class="content-row">
+  <%= render "reviews/review_form.html", :recipe => @recipe %><br> -->
+  </div>
+</div>
