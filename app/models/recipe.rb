@@ -35,4 +35,13 @@ class Recipe < ActiveRecord::Base
     Review.all.order('created_at DESC')
   end
 
+  def vote_on_this?(current_user_id)
+    !Vote.find_by(voter_id: current_user_id, votable_id: self.id, votable_type: "Review") && current_user_id != self.asker.id
+  end
+
+  private
+
+  def sort_array_by_points(rev_arr)
+    rev_arr.sort_by{ |rev| rev.vote_count }.reverse
+  end
 end
