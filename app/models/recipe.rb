@@ -23,4 +23,16 @@ class Recipe < ActiveRecord::Base
   #   end
   # end
 
+  def self.sort_by_votes
+    Review.all.order('vote_count DESC')
+  end
+
+  def self.sort_by_trendiness
+    Review.all.where('created_at >= ?', DateTime.now - 7).order('view_count DESC')
+  end
+
+  def self.sort_by_recentness
+    Review.all.order('created_at DESC')
+  end
+
 end
