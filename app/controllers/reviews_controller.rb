@@ -29,4 +29,19 @@ class ReviewsController < ApplicationController
     end
   end
 
+  private
+
+  def parent_object
+    case
+      when params[:question_id] then Recipe.find(params[:question_id])
+      when params[:answer_id] then Answer.find(params[:answer_id])
+    end
+  end
+
+  def parent_url(parent)
+    case
+      when params[:recipe_id] then recipe_path(parent)
+      when params[:answer_id] then recipe_path(parent.recipe_id)
+    end
+  end
 end
