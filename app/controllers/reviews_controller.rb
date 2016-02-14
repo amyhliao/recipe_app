@@ -29,11 +29,28 @@ class ReviewsController < ApplicationController
     end
   end
 
+  # def create
+  #   @review = Review.new(params[:review].permit(:content))
+  #   @review.recipe = Recipe.find(params[:recipe_id])
+  #   @review.reviewer = current_user
+  #   if @review.save
+  #     if request.xhr?
+  #       render 'reviews/_review.html.erb', locals: {review: @review}, layout: false
+  #     else
+  #       redirect_to recipe_path(@review.recipe)
+  #     end
+  #   else
+  #     @recipe = Recipe.find(params[:recipe_id])
+  #     @errors = @review.errors.full_messages
+  #     render 'recipes/show.html.erb'
+  #   end
+  # end
+
   private
 
   def parent_object
     case
-      when params[:question_id] then Recipe.find(params[:question_id])
+      when params[:recipe_id] then Recipe.find(params[:recipe_id])
       when params[:answer_id] then Answer.find(params[:answer_id])
     end
   end
