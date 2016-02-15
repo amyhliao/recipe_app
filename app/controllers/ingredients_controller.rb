@@ -36,7 +36,7 @@ class IngredientsController < ApplicationController
 
   private
 
-  def category_params
+  def ingredient_params
     params.require(:recipe).require(:category).permit(:name)
   end
 end
