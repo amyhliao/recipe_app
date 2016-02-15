@@ -42,5 +42,4 @@ class RecipesController < ApplicationController
   def category_params
     params.require(:recipe).require(:category).permit(:name)
   end
-
 end
