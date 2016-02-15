@@ -27,5 +27,12 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def show
+    @recipe = Recipe.find_by(id: params[:id])
+    @recipe.update_attributes(view_count: (@recipe.view_count + 1))
+    @review = Review.new
+    @vote = Vote.new
+  end
+
 
 end
