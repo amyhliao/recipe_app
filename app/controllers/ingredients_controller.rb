@@ -1,7 +1,4 @@
-class RecipesController < ApplicationController
-  def index
-  end
-
+class IngredientsController < ApplicationController
   def new
     if logged_in?
       @recipe = Recipe.new
@@ -39,7 +36,7 @@ class RecipesController < ApplicationController
 
   private
 
-  def category_params
+  def ingredient_params
     params.require(:recipe).require(:category).permit(:name)
   end
 end
