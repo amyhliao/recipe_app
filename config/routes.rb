@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :votes, only: [:new, :create]
   end
 
+  resources :ingredients, only: [:index, :new, :create, :show]
   resources :tags, only: [:index, :show]
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :delete]
