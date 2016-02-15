@@ -8,5 +8,24 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def create
+    if logged_in?
+      @recipe = Recipe.new(params[:recipe].permit(:title, :content))
+      @recipe.asker_id = current_user.id
+      @category = Category.new
+      if @recipe.save
+        if category_params != nil
+          Category.make_categories(category_params[:name], @recipe)
+        end
+        redirect_to recipe_path(@recipe)
+      else
+        flash.now[:alert] = @recipe.errors.full_messages.join(", ")
+        render :new
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
 
 end
