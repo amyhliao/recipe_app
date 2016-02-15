@@ -34,5 +34,9 @@ class IngredientsController < ApplicationController
     @vote = Vote.new
   end
 
+  private
 
+  def category_params
+    params.require(:recipe).require(:category).permit(:name)
+  end
 end
