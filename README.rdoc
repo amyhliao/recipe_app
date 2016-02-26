@@ -6,5 +6,4 @@ Technologies used:
 
 * Ruby on Rails
 * Javascript
-* jQuery
-* AJAX
+
